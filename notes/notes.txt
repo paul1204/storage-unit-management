@@ -1,0 +1,3 @@
+1st screenshot. Error dealing with getters when using Lombok annotation
+
+Lombok issue. had to remove annotations and declare constructor, getter/setters
