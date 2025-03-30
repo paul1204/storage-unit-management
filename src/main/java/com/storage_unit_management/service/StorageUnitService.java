@@ -34,14 +34,14 @@ public class StorageUnitService {
         return storageUnitRepository.save(storageUnit);
     }
 
-    public StorageUnit updateStorageUnit(Long id, StorageUnit storageUnitDetails) {
-        StorageUnit storageUnit = storageUnitRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Storage Unit not found with id: " + id));
+    public StorageUnit updateStorageUnit(StorageUnit storageUnitRequest) {
+        StorageUnit storageUnit = storageUnitRepository.findByunitNumber(storageUnitRequest.getUnitNumber());
+               // .orElseThrow(() -> new ResourceNotFoundException("Storage Unit not found with id: " + storageUnitDetails.getId()));
 
        // storageUnit.setUnitNumber(storageUnitDetails.getUnitNumber());
-        storageUnit.setDescription(storageUnitDetails.getDescription());
-        storageUnit.setSizeInSqFt(storageUnitDetails.getSizeInSqFt());
-        storageUnit.setAvailable(storageUnitDetails.isAvailable());
+        storageUnit.setDescription(storageUnitRequest.getDescription());
+        storageUnit.setSizeInSqFt(storageUnitRequest.getSizeInSqFt());
+        storageUnit.setAvailable(storageUnitRequest.isAvailable());
 
         return storageUnitRepository.save(storageUnit);
     }
